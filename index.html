@@ -3,8 +3,81 @@
   <head>
     <meta charset="utf-8">
     <title>Granpa Reads To Me</title>
+
+    <style>
+
+      .page-header {
+        height: 30px;
+        font-size: 100%;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      .page-image {
+        height: 100%;
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+
+      .responsive {
+        width: 100%;
+        height: auto;
+      }
+
+
+    </style>
+
   </head>
   <body>
-    Hello Wolrd
+
+    <script src="./page-flip.browser.js"></script>
+
+    <h1>Home Sweet Tree</h1>
+
+    <div id="book">
+        <div class="my-page" data-density="hard">
+            <div class="page-content">
+                <h2 class="page-header"></h2>
+                <div class="page-footer"></div>
+            </div>
+        </div>
+         <div class="my-page" data-density="hard">
+            <div class="page-content">
+                <div class="page-image"> <img src="img/FrontCover.jpg" alt="FrontCover" class="responsive""> </div>
+            </div>
+        </div>
+        <div class="my-page">
+            <div class="page-content">
+                <div class="page-image"> <img src="img/InsideFrontCover.jpg" alt="InsideFrontCover" class="responsive""> </div>
+            </div>
+        </div>
+        <div class="my-page">
+            <div class="page-content">
+                <div class="page-image"> <img src="img/Frontispiece.jpg" alt="Frontispiece" class="responsive""> </div>
+            </div>
+        </div>
+        <div class="my-page">
+        </div>
+        <div class="my-page">
+        </div>
+        <div class="my-page" data-density="hard">
+        </div>
+    </div>
+
+
+    <script>
+      console.log('asdfasdf');
+      const pageFlip = new St.PageFlip(document.getElementById('book'), {
+        width: 400, // required parameter - base page width
+        height: 560, // required parameter - base page height
+      });
+
+      pageFlip.loadFromHTML(document.querySelectorAll('.my-page'));
+
+    </script>
+
   </body>
 </html>
+
+
