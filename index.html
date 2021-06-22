@@ -125,11 +125,7 @@
         transition: 1s all;
         display: flex;
       }
-
-
     </style>
-
-
 
   </head>
   <body>
@@ -140,7 +136,8 @@
     <button class="play" data-icon="P" aria-label="play pause toggle">Play</button>
     <div class="player">
       <audio controls>
-        <source src="aud/test.mp3" type="audio/mpeg">
+        <!-- <source src="aud/test.mp3" type="audio/mpeg"> -->
+        <source src="aud/bell.mp3" type="audio/mpeg">
       </audio>
 
       <div class="controls">
@@ -209,6 +206,11 @@
 
     <script>
 
+      const tracks = new Array();
+
+      tracks[0] = "aud/test.mp3";
+      tracks[1] = "aud/bell.mp3";
+
       document.addEventListener('DOMContentLoaded', function() {
           console.log("All loaded")
           let lastState = 'read';
@@ -258,10 +260,10 @@
             const state = e.data;
             document.querySelector(".page-state").innerText = state;
             console.log(`State changed: ${state}`)
-            if (state === 'read' && lastState === 'flipping'){
-              console.log(`New page`);
-              console.dir(playPauseMedia);
-              playPauseMedia();
+            if (state === 'read' && ['flipping','user_fold'].includes(lastState)){
+              const pageNumber = pageFlip.getCurrentPageIndex();
+              console.log(`New page : ${pageNumber + 1}`);
+              playPauseMedia(tracks[0]);
             }
             lastState = state;
           });

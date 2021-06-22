@@ -2,6 +2,8 @@
 const media = document.querySelector('audio');
 // const controls = document.querySelector('.controls');
 
+const mediaSource = document.getElementsByTagName('source')[0];
+
 const play = document.querySelector('.play');
 // const stop = document.querySelector('.stop');
 // const rwd = document.querySelector('.rwd');
@@ -20,9 +22,12 @@ play.addEventListener('click', playPauseMedia);
 // media.addEventListener('ended', stopMedia);
 
 
-function playPauseMedia() {
+function playPauseMedia(track) {
   if(media.paused) {
     play.setAttribute('data-icon','u');
+    console.dir(mediaSource);
+    mediaSource.src = track;
+    media.load();
     media.play();
   } else {
     play.setAttribute('data-icon','P');
