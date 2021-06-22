@@ -111,6 +111,22 @@
         width: 60px;
       }
 
+      .controls {
+        visibility: hidden;
+        opacity: 0.5;
+        width: 400px;
+        border-radius: 10px;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        margin-left: -200px;
+        background-color: black;
+        box-shadow: 3px 3px 5px black;
+        transition: 1s all;
+        display: flex;
+      }
+
+
     </style>
 
 
@@ -121,6 +137,30 @@
     <script src="./page-flip.browser.js"></script>
 
 
+    <button class="play" data-icon="P" aria-label="play pause toggle">Play</button>
+    <div class="player">
+      <audio controls>
+        <source src="aud/test.mp3" type="audio/mpeg">
+      </audio>
+
+      <div class="controls">
+
+        <!-- <button class="stop" data-icon="S" aria-label="stop"></button>
+        <div class="timer">
+          <div></div>
+          <span aria-label="timer">00:00</span>
+        </div>
+        <button class="rwd" data-icon="B" aria-label="rewind"></button>
+        <button class="fwd" data-icon="F" aria-label="fast forward"></button> -->
+
+      </div>
+
+    </div>
+
+<!--       <video controls>
+        <source src="aud/test.mp3" type="audio/mp3">
+        <p>Your browser doesn't support HTML5 video. Here is a <a href="rabbit320.mp4">link to the video</a> instead.</p>
+      </video> -->
 
     <div class="container">
         <div>
@@ -171,6 +211,7 @@
 
       document.addEventListener('DOMContentLoaded', function() {
           console.log("All loaded")
+          let lastState = 'read';
           // const pageFlip = new PageFlip(
           const pageFlip = new St.PageFlip(
               document.getElementById("book"),
@@ -214,7 +255,15 @@
 
           // triggered when the state of the book changes
           pageFlip.on("changeState", (e) => {
-              document.querySelector(".page-state").innerText = e.data;
+            const state = e.data;
+            document.querySelector(".page-state").innerText = state;
+            console.log(`State changed: ${state}`)
+            if (state === 'read' && lastState === 'flipping'){
+              console.log(`New page`);
+              console.dir(playPauseMedia);
+              playPauseMedia();
+            }
+            lastState = state;
           });
 
           // triggered when page orientation changes
@@ -225,42 +274,7 @@
 
     </script>
 
-    <!-- script>
-        // const setWidth = 500;
-        const setWidth = window.innerWidth / 2.8;
-        const pageFlip = new St.PageFlip(document.getElementById('book'), {
-          // width: 500, // required parameter - base page width
-          // height: 600, // required parameter - base page height
-          width: setWidth, // required parameter - base page width
-          height: setWidth * 1.38, // required parameter - base page height
-          // width: window.innerWidth, // required parameter - base page width
-          // height: window.innerWidth * 1.38, // required parameter - base page height
-          showCover: true,
-          // size: stretch,
-        });
-
-        pageFlip.loadFromHTML(document.querySelectorAll('.my-page'));
-
-        pageFlip.on('flip', (e) => {
-                console.log("Current page: " + e.data);
-                // callback code
-            }
-        );
-
-        pageFlip.on('changeOrientation', (e) => {
-                console.log("Orientation Change: " + e.data);
-                // callback code
-            }
-        );
-
-        pageFlip.on('changeState', (e) => {
-                console.log("State Change: " + e.data);
-                // callback code
-            }
-        );
-
-    </script -->
-
+    <script src="./custom-player.js"></script>
   </body>
 </html>
 
