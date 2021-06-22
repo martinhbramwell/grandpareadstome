@@ -36,12 +36,6 @@
     <h1>Home Sweet Tree</h1>
 
     <div id="book">
-        <div class="my-page" data-density="hard">
-            <div class="page-content">
-                <h2 class="page-header"></h2>
-                <div class="page-footer"></div>
-            </div>
-        </div>
          <div class="my-page" data-density="hard">
             <div class="page-content">
                 <div class="page-image"> <img src="img/FrontCover.jpg" alt="FrontCover" class="responsive""> </div>
@@ -71,9 +65,30 @@
       const pageFlip = new St.PageFlip(document.getElementById('book'), {
         width: 400, // required parameter - base page width
         height: 560, // required parameter - base page height
+        showCover: true, // required parameter - base page height
       });
+        // size: stretch, // required parameter - base page height
 
       pageFlip.loadFromHTML(document.querySelectorAll('.my-page'));
+
+      pageFlip.on('flip', (e) => {
+              console.log("Current page: " + e.data);
+              // callback code
+          }
+      );
+
+      pageFlip.on('changeOrientation', (e) => {
+              console.log("Orientation Change: " + e.data);
+              // callback code
+          }
+      );
+
+      pageFlip.on('changeState', (e) => {
+              console.log("State Change: " + e.data);
+              // callback code
+          }
+      );
+
 
     </script>
 
