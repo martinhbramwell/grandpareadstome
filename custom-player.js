@@ -25,7 +25,7 @@ play.addEventListener('click', playPauseMedia);
 function playPauseMedia(track) {
   if(media.paused) {
     play.setAttribute('data-icon','u');
-    console.dir(mediaSource);
+    // console.dir(mediaSource);
     mediaSource.src = track;
     media.load();
     media.play();
