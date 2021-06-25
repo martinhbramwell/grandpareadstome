@@ -7,8 +7,16 @@
     <style>
 
       .responsive {
-        width: 100%;
+        width: 80%;
         height: auto;
+      }
+
+      html {
+        background: url('./img/bgnd.png') no-repeat 0 0 scroll;
+        background-color:#0C0C0C;
+        background-size: 100% 100%;
+        height:100%;
+        width:100%;
       }
 
       .flip-book {
@@ -126,14 +134,10 @@
         display: flex;
       }
     </style>
-
   </head>
   <body>
-
     <script src="./page-flip.browser.js"></script>
 
-
-    <button class="play" data-icon="P" aria-label="play pause toggle">Play</button>
     <div class="player">
       <audio controls>
         <!-- <source src="aud/test.mp3" type="audio/mpeg"> -->
@@ -151,13 +155,12 @@
         <button class="fwd" data-icon="F" aria-label="fast forward"></button> -->
 
       </div>
-
     </div>
 
-<!--       <video controls>
-        <source src="aud/test.mp3" type="audio/mp3">
-        <p>Your browser doesn't support HTML5 video. Here is a <a href="rabbit320.mp4">link to the video</a> instead.</p>
-      </video> -->
+    <div class="container">
+      <div id="book">
+      </div>
+    </div>
 
     <div class="container">
         <div>
@@ -174,302 +177,54 @@
         <div class="tiny">
             [<span class="page-current">1</span> of <span class="page-total">-</span>]
             State: <i class="page-state">read</i>, orientation: <i class="page-orientation">landscape</i>
+            <p class="play" data-icon="P" aria-label="play pause toggle"></p>
+            <!-- <button class="play" data-icon="P" aria-label="play pause toggle"></button> -->
         </div>
     </div>
 
-    <div class="container">
-      <div id="book">
-           <div class="my-page" data-density="hard">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/FrontCover.jpg" alt="FrontCover" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page" data-density="hard">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/InsideFrontCover.jpg" alt="InsideFrontCover" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Frontispiece.jpg" alt="Frontispiece" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/FrontispieceBack.jpg" alt="FrontispieceBack" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/TitlePage.jpg" alt="TitlePage" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page002.jpg" alt="Page002" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page003.jpg" alt="Page003" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page004.jpg" alt="Page004" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page005.jpg" alt="Page005" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page006.jpg" alt="Page006" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page007.jpg" alt="Page007" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page008.jpg" alt="Page008" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page009.jpg" alt="Page009" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page010.jpg" alt="Page010" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page011.jpg" alt="Page011" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page012.jpg" alt="Page012" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page013.jpg" alt="Page013" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page014.jpg" alt="Page014" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page015.jpg" alt="Page015" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page016.jpg" alt="Page016" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page017.jpg" alt="Page017" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page018.jpg" alt="Page018" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page019.jpg" alt="Page019" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page020.jpg" alt="Page020" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page021.jpg" alt="Page021" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page022.jpg" alt="Page022" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page023.jpg" alt="Page023" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page024.jpg" alt="Page024" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page025.jpg" alt="Page025" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page026.jpg" alt="Page026" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page027.jpg" alt="Page027" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page028.jpg" alt="Page028" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page029.jpg" alt="Page029" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page030.jpg" alt="Page030" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page031.jpg" alt="Page031" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page032.jpg" alt="Page032" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Page033.jpg" alt="Page033" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/Rear.jpg" alt="Rear" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page" data-density="hard">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/InsideBackCover.jpg" alt="InsideBackCover" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page" data-density="hard">
-              <div class="page-content">
-                  <div class="page-image">
-                    <img src="img/BackCover.jpg" alt="BackCover" class="responsive">
-                  </div>
-              </div>
-          </div>
-          <div class="my-page">
-          </div>
-          <div class="my-page">
-          </div>
-          <div class="my-page" data-density="hard">
-          </div>
-      </div>
-    </div>
-
-
     <script>
+      const pageSpecs = [
+        { page: 'FrontCover', density: 'hard'},
+        { page: 'InsideFrontCover', density: 'hard'},
+        { page: 'Frontispiece', density: 'soft'},
+        { page: 'FrontispieceBack', density: 'soft'},
+        { page: 'TitlePage', density: 'soft'},
+        { page: 'Page002', density: 'soft'},
+        { page: 'Page003', density: 'soft'},
+        { page: 'Page004', density: 'soft'},
+        { page: 'Page005', density: 'soft'},
+        { page: 'Page006', density: 'soft'},
+        { page: 'Page007', density: 'soft'},
+        { page: 'Page008', density: 'soft'},
+        { page: 'Page009', density: 'soft'},
+        { page: 'Page010', density: 'soft'},
+        { page: 'Page011', density: 'soft'},
+        { page: 'Page012', density: 'soft'},
+        { page: 'Page013', density: 'soft'},
+        { page: 'Page014', density: 'soft'},
+        { page: 'Page015', density: 'soft'},
+        { page: 'Page016', density: 'soft'},
+        { page: 'Page017', density: 'soft'},
+        { page: 'Page018', density: 'soft'},
+        { page: 'Page019', density: 'soft'},
+        { page: 'Page020', density: 'soft'},
+        { page: 'Page021', density: 'soft'},
+        { page: 'Page022', density: 'soft'},
+        { page: 'Page023', density: 'soft'},
+        { page: 'Page024', density: 'soft'},
+        { page: 'Page025', density: 'soft'},
+        { page: 'Page026', density: 'soft'},
+        { page: 'Page027', density: 'soft'},
+        { page: 'Page028', density: 'soft'},
+        { page: 'Page029', density: 'soft'},
+        { page: 'Page030', density: 'soft'},
+        { page: 'Page031', density: 'soft'},
+        { page: 'Page032', density: 'soft'},
+        { page: 'Page033', density: 'soft'},
+        { page: 'Rear', density: 'soft'},
+        { page: 'InsideBackCover', density: 'hard'},
+        { page: 'BackCover', density: 'hard'},
+      ];
 
       const portraitTracks = new Array();
 
@@ -481,10 +236,44 @@
       landscapeTracks[0] = "aud/test.mp3";
       landscapeTracks[1] = "aud/bell.mp3";
 
+
+
+      function buildPageDiv(index, spec, path) {
+        const imageSpec = document.createElement('img');
+        imageSpec.setAttribute('src', `${path}/${spec.page}.jpg`);
+        imageSpec.setAttribute('alt', `${spec.page}`);
+        imageSpec.setAttribute('class', 'responsive');
+
+        const pageImage = document.createElement('div');
+        imageSpec.setAttribute('class', 'page-image');
+        pageImage.appendChild(imageSpec);
+
+        const pageContent = document.createElement('div');
+        imageSpec.setAttribute('class', 'page-content');
+        pageContent.appendChild(pageImage);
+
+        const pageSpec = document.createElement('div');
+        imageSpec.setAttribute('class', 'my-page');
+        imageSpec.setAttribute('data-density', spec.density);
+        pageSpec.appendChild(pageContent);
+
+        return pageSpec;
+      }
+
+
       document.addEventListener('DOMContentLoaded', function() {
+          console.log("DOM loaded")
+          const book = document.getElementById("book")
+
+
+          let output = '';
+          let imagesPath = 'img';
+          pageSpecs.forEach(function (pageSpec, idx) {
+            pageSpec = buildPageDiv(idx, pageSpec, imagesPath);
+            book.appendChild(pageSpec);
+          });
+
           console.log("All loaded")
-          let lastState = 'read';
-          // const pageFlip = new PageFlip(
           const pageFlip = new St.PageFlip(
               document.getElementById("book"),
               {
@@ -506,6 +295,9 @@
 
           // load pages
           pageFlip.loadFromHTML(document.querySelectorAll(".my-page"));
+
+          let lastState = 'read';
+          let lastOrientation = pageFlip.getOrientation();
 
           document.querySelector(".page-total").innerText = pageFlip.getPageCount();
           document.querySelector(
@@ -532,7 +324,8 @@
             console.log(`State changed: ${state}`)
             if (state === 'read' && ['flipping','user_fold'].includes(lastState)){
               const pageNumber = pageFlip.getCurrentPageIndex();
-              console.log(`New page : ${pageNumber + 1}`);
+              console.log(`New page : ${pageNumber + 1} :: ${pageSpecs[pageNumber].page}`);
+              // console.log(`New page : ${pageNumber + 1} `);
               playPauseMedia(portraitTracks[1]);
             }
             lastState = state;
@@ -540,7 +333,11 @@
 
           // triggered when page orientation changes
           pageFlip.on("changeOrientation", (e) => {
-              document.querySelector(".page-orientation").innerText = e.data;
+            const orientation = e.data;
+            document.querySelector(".page-orientation").innerText = orientation;
+            // console.log(`New orientation : ${orientation}, Showing page ${currentPageIndex}`);
+            // console.log(`Test : ${landscapeTracks[1]}`);
+            lastOrientation = orientation;
           });
       });
 
@@ -549,5 +346,3 @@
     <script src="./custom-player.js"></script>
   </body>
 </html>
-
-
