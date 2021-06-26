@@ -22,15 +22,29 @@ play.addEventListener('click', playPauseMedia);
 // media.addEventListener('ended', stopMedia);
 
 
-function playPauseMedia(track) {
+function playPauseMedia(tracks) {
   if(media.paused) {
-    play.setAttribute('data-icon','u');
-    // console.dir(mediaSource);
-    mediaSource.src = track;
+
+    mediaSource.src = tracks.shift();
+
+    media.addEventListener('ended', () => { //when a song finished playing
+        if (tracks.length) {
+            media.pause();
+            mediaSource.src = tracks.shift();
+            media.load();
+            let tinyDelay = Math.random();
+            tinyDelay = Math.random();
+            // console.log(`Playing : ${mediaSource.src}`);
+            media.play();
+        }
+    });
+
     media.load();
+    // console.log(`Playing : ${mediaSource.src}`);
     media.play();
+
   } else {
-    play.setAttribute('data-icon','P');
+    // play.setAttribute('data-icon','P');
     media.pause();
   }
 }
@@ -38,7 +52,7 @@ function playPauseMedia(track) {
 function stopMedia() {
   media.pause();
   media.currentTime = 0;
-  play.setAttribute('data-icon','P');
+  // play.setAttribute('data-icon','P');
 }
 
 

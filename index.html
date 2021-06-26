@@ -106,13 +106,13 @@
         margin-top: 30px;
         margin-bottom: 10px;
         margin-right: 15px;
-        margin-left: 30px;
+        margin-left: 100px;
       }
 
       .btn-next {
         margin-top: 30px;
         margin-bottom: 10px;
-        margin-left: 15px;
+        margin-left: 35px;
       }
 
       .button {
@@ -141,7 +141,7 @@
     <div class="player">
       <audio controls>
         <!-- <source src="aud/test.mp3" type="audio/mpeg"> -->
-        <source src="aud/bell.mp3" type="audio/mpeg">
+        <source src="aud/test.mp3" type="audio/mpeg">
       </audio>
 
       <div class="controls">
@@ -226,17 +226,16 @@
         { page: 'BackCover', density: 'hard'},
       ];
 
-      const portraitTracks = new Array();
+      const audioTracks = new Array();
+      const audioDir = "aud";
+      const audioExt = "mp3";
+      const bell = `${audioDir}/bell.${audioExt}`;
 
-      portraitTracks[0] = "aud/test.mp3";
-      portraitTracks[1] = "aud/bell.mp3";
-
-      const landscapeTracks = new Array();
-
-      landscapeTracks[0] = "aud/test.mp3";
-      landscapeTracks[1] = "aud/bell.mp3";
-
-
+      // audioTracks[0] = "aud/FrontCover.mp3";
+      // audioTracks[1] = "aud/InsideFrontCover.mp3";
+      // audioTracks[2] = "aud/Frontispiece.mp3";
+      // audioTracks[3] = "aud/FrontispieceBack.mp3";
+      // audioTracks[4] = "aud/TitlePage.mp3";
 
       function buildPageDiv(index, spec, path) {
         const imageSpec = document.createElement('img');
@@ -260,6 +259,32 @@
         return pageSpec;
       }
 
+      const getTracks = {
+        // portrait: (pg) => console.log(`P ${pg + 1}`),
+        portrait: (pg) => {
+          return [ audioTracks[pg], bell ]
+          // console.log(`P ${pg}: ${audioTracks[pg]} `);
+          // const trks = [];
+          // trks.push(audioTracks[pg]);
+          // playPauseMedia(trks);
+
+          // console.log(`Bell`);
+          // playPauseMedia(bell);
+        },
+        landscape: (pg) => {
+          return [ audioTracks[pg], audioTracks[pg+1], bell ]
+          // console.log(`L ${pg}: ${audioTracks[pg]}`);
+          // playPauseMedia([audioTracks[pg]]);
+
+          // pg += 1;
+          // console.log(`L ${pg}: ${audioTracks[pg]}`);
+          // // playPauseMedia(audioTracks[pg]);
+
+          // console.log(`Bell`);
+          // // playPauseMedia(bell);
+        },
+      }
+
 
       document.addEventListener('DOMContentLoaded', function() {
           console.log("DOM loaded")
@@ -269,8 +294,12 @@
           let output = '';
           let imagesPath = 'img';
           pageSpecs.forEach(function (pageSpec, idx) {
-            pageSpec = buildPageDiv(idx, pageSpec, imagesPath);
-            book.appendChild(pageSpec);
+            pageDiv = buildPageDiv(idx, pageSpec, imagesPath);
+            book.appendChild(pageDiv);
+            // console.dir(pageSpec);
+            console.log(`Preparing audio track entry: ${pageSpec.page}`);
+            audioTracks.push(`${audioDir}/${pageSpec.page}.${audioExt}`);
+
           });
 
           console.log("All loaded")
@@ -324,9 +353,14 @@
             console.log(`State changed: ${state}`)
             if (state === 'read' && ['flipping','user_fold'].includes(lastState)){
               const pageNumber = pageFlip.getCurrentPageIndex();
-              console.log(`New page : ${pageNumber + 1} :: ${pageSpecs[pageNumber].page}`);
+              console.log(`New page : ${pageNumber} :: ${pageSpecs[pageNumber].page}`);
               // console.log(`New page : ${pageNumber + 1} `);
-              playPauseMedia(portraitTracks[1]);
+              const trks = getTracks[pageFlip.getOrientation()](pageNumber);
+              // console.dir(trks);
+              playPauseMedia(trks);
+              console.log(`Played : ${pageNumber}`);
+            } else {
+              stopMedia();
             }
             lastState = state;
           });
